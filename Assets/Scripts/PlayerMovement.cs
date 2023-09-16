@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
         _mRollingMovement = GetComponent<RollingMovement>();
     }
 
-    private void OnMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
         // Get the movement vector and apply it to the RollingMovement component
         var  movement = context.ReadValue<Vector2>(); // callback for hitting arrow keys
