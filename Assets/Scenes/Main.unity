@@ -285,8 +285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 668c22d1d8ea3bd42ae005e1be779b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mPlayerScore: {fileID: 0}
-  mOpponentScore: {fileID: 0}
+  mGameOverText: {fileID: 862499204}
+  mTimerText: {fileID: 1237609867}
+  mPlayerScore: {fileID: 2079450417}
+  mOpponentScore: {fileID: 1589611849}
   mGameTimeInSeconds: 60
 --- !u!1 &846904572
 GameObject:
@@ -905,6 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2349f3e51138645b59c655ebb5ea1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mScoreText: {fileID: 1626025092}
 --- !u!114 &1589611851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1799,3 +1802,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2349f3e51138645b59c655ebb5ea1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mScoreText: {fileID: 1002240708}

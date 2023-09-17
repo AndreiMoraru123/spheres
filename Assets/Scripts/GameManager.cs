@@ -1,7 +1,12 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI mGameOverText;
+
+    [SerializeField] private TextMeshProUGUI mTimerText;
+
     [SerializeField] private Score mPlayerScore;
     
     [SerializeField] private Score mOpponentScore;
@@ -12,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private bool _mGameIsPlaying = false;
 
-    public static float RespawnHeight = 0.25f;
+    public const float RespawnHeight = 0.25f;
     
     void Start()
     {
@@ -23,7 +28,7 @@ public class GameManager : MonoBehaviour
         _mTimer = mGameTimeInSeconds;
         
         // update the timer text
-        // UpdateTimer();
+        UpdateTimer();
     }
 
     void FixedUpdate()
@@ -33,6 +38,9 @@ public class GameManager : MonoBehaviour
         
         // subtract the fixed delta time from the timer
         _mTimer -= Time.fixedDeltaTime;
+        
+        // update the timer text
+        UpdateTimer();
         
         // if the timer hits zero, enter the game over state
         if (!(_mTimer <= 0)) return;
@@ -46,6 +54,27 @@ public class GameManager : MonoBehaviour
         
         // pause the game by setting the time scale to zero
         Time.timeScale = 0;
+        
+        // display the end game text
+        string gameOverText;
+
+        if (mPlayerScore.ScoreValue > mOpponentScore.ScoreValue)
+        {
+            gameOverText = "YOU WIN";
+        }
+        else if (mPlayerScore.ScoreValue < mOpponentScore.ScoreValue)
+        {
+            gameOverText = "YOU LOSE";
+        }
+        else
+        {
+            gameOverText = "TIE";
+        }
+
+        mGameOverText.text = gameOverText + "\n\nPress SPACE to Restart";
+        
+        // show the game over text once it has been set
+        mGameOverText.gameObject.SetActive(true);
     }
 
     public void RestartGame()
@@ -53,9 +82,19 @@ public class GameManager : MonoBehaviour
         if (_mGameIsPlaying) return;
         // unpause the game by setting the time scale to 1
         Time.timeScale = 1f;
-            
+        
+        // hide the end game text
+        mGameOverText.gameObject.SetActive(false);
+        
         // reset the game timer
         _mTimer = mGameTimeInSeconds;
         _mGameIsPlaying = true;
+    }
+
+    private void UpdateTimer()
+    {
+        mTimerText.text = string.Format("{0:0}:{1:00}",
+            Mathf.Floor(_mTimer / 60),
+            Mathf.Floor(_mTimer % 60));
     }
 }
