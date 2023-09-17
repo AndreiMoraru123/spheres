@@ -19,6 +19,12 @@ public class RollingMovement : MonoBehaviour
     {
         // Every physics tick, add a force equal to the movement vector multiplied by speed
         _mRigidbody.AddForce(mMovementDirection * mSpeed);
+        
+        // if the Y position of the sphere is below the respawn height, reset its position
+        if (transform.position.y <= GameManager.RespawnHeight)
+        {
+            ResetPosition();
+        }
     }
 
     public void ResetPosition()
