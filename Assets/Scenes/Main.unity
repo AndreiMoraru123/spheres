@@ -506,7 +506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Collect more cubes than your opponent!
+  m_text: 'Collect more spheres than your opponent!
 
 
     Press SPACE to start.'
