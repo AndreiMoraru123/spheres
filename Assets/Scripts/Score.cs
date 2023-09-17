@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public int ScoreValue { get; private set; }
+    [SerializeField] private int ScoreValue { get; set; }
 
     public void ResetScore()
     {
